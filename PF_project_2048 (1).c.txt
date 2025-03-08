@@ -1,0 +1,206 @@
+#include<conio.h>
+#include<stdio.h>
+#include<stdlib.h>
+#include<windows.h>
+
+//Function Declarations ...
+void player();
+void endgame();
+void scores();
+void newGame();
+void addpiece();
+void printUI();
+void lines();
+int candomove(int row,int col, int nextrow, int nextcol);
+
+//Global Variable ...
+int gameboard[4][4];
+int dir_Row[4]={1,0,-1,0};//(1->represents d),(-1->represents a)...
+int dir_Col[4]={0,1,0,-1};//(1->represents w),(-1->represents s)...
+char name[100];//will store name..
+int score;//will store score...
+
+//Takes name of the player...
+void player()
+{
+			int emoji = 1;
+			system("cls");
+			lines();
+			printf("\n\t\tWelcome to 2048 Game!!!\n");
+			printf("\t\t Reach 2048 to WIN %c %c\n\n",emoji,emoji+2);
+			lines();
+			printf("Enter your name : ");
+			fgets(name,sizeof(name),stdin);
+			//gets(name);
+}
+
+void lines()
+{
+	for(int i=0;i<60;i++)
+	printf("-");
+	printf("\n");
+}
+
+//When no free space available..
+void endgame()
+{
+	system("cls");
+	lines();
+	printf("\t\tPlayer : ");
+	printf("%s\n",name);
+	printf("\t\tYou scored : %dpoints",score);
+	printf("\n\t\tThank you for playing our game :) \n");
+	lines();
+	exit(0);
+}
+
+//Will stores score accordingly..
+void scores()
+{
+	int max=gameboard[0][0];
+	for(int i=0;i<4;i++)
+	{
+		for(int j=0;j<4;j++)
+		{
+			if(gameboard[i][j]>max)
+			max=gameboard[i][j];
+		}
+	}
+	score=max;
+	printf("\t\t   Current Score : %d\n",score);	
+}
+
+//Initializing the whole starting gameboard with 0...
+void newGame(){
+	
+	player();
+	for(int i=0; i<4; i++){
+		for(int j=0; j<4; j++)
+		{
+			gameboard[i][j]=0;
+		}
+	}
+//1 random (2) at different position...
+		addpiece();
+}
+//add (2) at random and free position...
+void addpiece()
+{
+	int flag=0;
+	int max=0;
+	while(1)
+	{	
+		int i=rand()%4;
+		int j=rand()%4;
+		if(gameboard[i][j]==0)
+		{
+		gameboard[i][j]=2;
+		i=0,j=0;
+		flag=1;
+		break;
+		}
+	max++;
+	if(max>1000000 && flag==0)
+	endgame();
+	}
+}
+//Will print UI to interact with the user...
+void printUI(){     
+		system("cls");
+			lines();
+			printf("\t\tWelcome to 2048 Game!!!\n");
+			printf("\t\t Reach 2048 to WIN :)\n");
+			lines();
+			scores();
+			lines();
+			printf("\t\t\tCOMMANDS : \n");
+			printf("n-> New game, w-> Up, s-> Down, d->Right, a->Left, q->QUIT\n\n");
+	for(int i=0; i<4; i++){
+		for(int j=0; j<4; j++)
+		{
+			if(gameboard[i][j]==0)
+			printf("  .  ");
+			else
+			printf("  %d  ",gameboard[i][j]);
+		}
+		printf("\n");
+	}
+}
+//Move Function...
+void move(int direction){
+	int StartRow=0, StartCol=0, rowstep=1,colstep=1;
+	if (direction==0){//represents s-key....
+		StartRow=3;//last row...
+		rowstep=-1;//flag
+	}
+	if (direction==1){//represents d-key....
+		StartCol=3;//last col..
+		colstep=-1;//flag
+	}
+		int movepossible=0,pieceadd;
+		do{
+		movepossible=0;
+		for(int i=StartRow;i>=0 && i<4;i+=rowstep){
+		for(int j=StartCol;j>=0 && j<4;j+=colstep)
+		{
+			int NextI= i+dir_Row[direction];
+			int NextJ= j+dir_Col[direction];
+		
+			if(candomove(i,j,NextI,NextJ) && gameboard[i][j]){
+			gameboard[NextI][NextJ]+=gameboard[i][j];
+			gameboard[i][j]=0;
+			movepossible=1;//flag
+			pieceadd=1;//flag
+		}
+	}
+}
+	}while(movepossible==1);
+		if(pieceadd)
+		addpiece();
+}
+//Function to check if the user can apply move with entered command..
+int candomove(int row,int col, int nextrow, int nextcol){
+		int status=1;
+		if((nextrow<0 || nextrow>=4 || nextcol<0 ||nextcol>=4 )|| (gameboard[row][col]!=gameboard[nextrow][nextcol])&&(gameboard[nextrow][nextcol]!=0))
+		status=0;
+		return status;
+	}
+//MAIN BODY...
+int main(){
+	system("Color C");
+	char Command[256];//keymapping...
+	Command['d']=1;
+	Command['w']=2;
+	Command['a']=3;
+	Command['s']=0;
+		newGame();
+	while(1){
+		printUI();
+		char command ;
+		printf("\nEnter command : ");
+		scanf(" %c", &command);
+		if(command == 'n')
+		{
+			player();
+			newGame();
+		}
+		else if(command == 'q')
+		{
+			char sure;
+		printf("Are you sure [Y/N] : ");
+		scanf("  %c",&sure);
+		if(sure=='y'|| sure=='Y')
+		{
+		endgame();
+		}
+		else if(sure=='n' || sure=='N')
+		continue;
+	}
+		else if(command=='w' || command=='a' || command=='s' || command=='d' ){
+			int curDir = Command[command];
+			//printf("%d",curDir);
+			move(curDir);
+		}
+	}
+	return 0;
+}
