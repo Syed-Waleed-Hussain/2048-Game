@@ -1,7 +1,6 @@
 # 2048 Game - Console Version
 
-![2048 Game]([![image](https://github.com/user-attachments/assets/7de27279-a1d4-45aa-ab03-5dbfef273f76)](https://www.google.com/imgres?q=2048%20game%204k&imgurl=https%3A%2F%2Fstore-images.s-microsoft.com%2Fimage%2Fapps.39658.13748070934816609.a1123cd6-3b94-44ef-932f-4e977c3b824d.8c997a33-e61c-42bd-a117-4413310fa36f%3Fmode%3Dscale%26q%3D90%26h%3D300%26w%3D300&imgrefurl=https%3A%2F%2Fwww.microsoft.com%2Fkl-gl%2Fp%2F2048%2F9nn76p3b5d8g&docid=qtw8V3t58d0dLM&tbnid=ErKe8QbNPpG1HM&vet=12ahUKEwj1sOmky4uMAxUzTaQEHeDlE-8QM3oECGQQAA..i&w=300&h=300&hcb=2&ved=2ahUKEwj1sOmky4uMAxUzTaQEHeDlE-8QM3oECGQQAA)
-)
+
 
 ## 📌 About the Game
 
@@ -32,7 +31,10 @@ Run the following command in the terminal to clone the repository:
 git clone https://github.com/Syed-Waleed-Hussain/2048-Game.git
 cd 2048-Game
 
-## 🔍 Example Gameplay Output
+ 🔍 Example Gameplay Output
+
+![2048 Game](https://store-images.s-microsoft.com/image/apps.39658.13748070934816609.a1123cd6-3b94-44ef-932f-4e977c3b824d.8c997a33-e61c-42bd-a117-4413310fa36f?mode=scale&q=90&h=300&w=300)
+
 ```sh
 ------------------------------
     Welcome to 2048 Game!!!
@@ -49,3 +51,4 @@ cd 2048-Game
   .    .    .    .  
 
 Enter command: 
+
