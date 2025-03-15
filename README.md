@@ -33,7 +33,6 @@ cd 2048-Game
 
  🔍 Example Gameplay Output
 
-![2048 Game](https://store-images.s-microsoft.com/image/apps.39658.13748070934816609.a1123cd6-3b94-44ef-932f-4e977c3b824d.8c997a33-e61c-42bd-a117-4413310fa36f?mode=scale&q=90&h=300&w=300)
 
 ```sh
 ------------------------------
