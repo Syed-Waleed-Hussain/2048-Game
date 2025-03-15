@@ -1,6 +1,7 @@
 # 2048 Game - Console Version
 
-![2048 Game](https://github.com/YOUR_GITHUB_USERNAME/2048-Game/assets/YOUR_IMAGE_ID)
+![2048 Game](![image](https://github.com/user-attachments/assets/7de27279-a1d4-45aa-ab03-5dbfef273f76)
+)
 
 ## 📌 About the Game
 
@@ -30,3 +31,20 @@ Run the following command in the terminal to clone the repository:
 ```sh
 git clone https://github.com/YOUR_GITHUB_USERNAME/2048-Game.git
 cd 2048-Game
+## 🔍 Example Gameplay Output
+```sh
+------------------------------
+    Welcome to 2048 Game!!!
+    Reach 2048 to WIN :)
+------------------------------
+    Current Score : 0
+------------------------------
+        COMMANDS :
+ n-> New game, w-> Up, s-> Down, d->Right, a->Left, q->QUIT
+
+  .    .    .    .  
+  .    2    .    .  
+  .    .    .    .  
+  .    .    .    .  
+
+Enter command: 
